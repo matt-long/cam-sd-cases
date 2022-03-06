@@ -1,20 +1,28 @@
-archive_root: /glade/scratch/mclong/archive/cam6327_sd.apo_test_srf_emis.003
-case: cam6327_sd.apo_test_srf_emis.003
-caseroot: /glade/work/mclong/cam-sd-cases/cam-sd-cases/cam6327_sd.apo_test_srf_emis.003
+archive_root: /glade/scratch/mclong/archive/cam6327_sd.apo_test_srf_emis.004
+case: cam6327_sd.apo_test_srf_emis.004
+caseroot: /glade/work/mclong/cam-sd-cases/cam6327_sd.apo_test_srf_emis.004
 chem_mech_template: /glade/p/cgd/oce/people/mclong/cesm/cam6_3_027/src/chemistry/pp_trop_mam4/chem_mech.in
 compset: SDYN_CAM60_CLM50%SP_CICE%PRES_DOCN%DOM_MOSART_SGLC_SWAV
 fincl1:
+- T
 - U
 - V
-- T
 - Q
 - PS
+- Z3
+- PBLH
+- TMQ
+- OMEGA
 fincl2:
+- T
 - U
 - V
-- T
 - Q
 - PS
+- Z3
+- PBLH
+- TMQ
+- OMEGA
 fincl2lonlat_dict:
   alt: 62.507w_82.451n
   brw: 156.611w_71.323n
@@ -33,13 +41,17 @@ fincl2lonlat_dict:
   spo: 24.800w_89.980s
 ncdata: /glade/work/mclong/cam-sd-cases/data/f.e20.FWAMIP.f09_f09.134.1975.009.cam.i.2010-01-01_56L_c170403.apo-forward-tracers.nc
 resolution: f09_f09_mg17
-rundir: /glade/scratch/mclong/cam6327_sd.apo_test_srf_emis.003
+rundir: /glade/scratch/mclong/cam6327_sd.apo_test_srf_emis.004
 sathist_fincl:
 - T
 - U
 - V
 - Q
 - PS
+- Z3
+- PBLH
+- TMQ
+- OMEGA
 sathist_track_infile: /glade/work/mclong/cam-sd-cases/data/sathist_infile.hip-orc-tom-aoa.20220303.nc
 srf_emis_files:
   apo_jena:

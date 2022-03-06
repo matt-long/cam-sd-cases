@@ -1,0 +1,165 @@
+* Comments
+* User-given Tag Description: CAM_MAM4_2021
+* Tag database identifier : MZ290_CAM_MAM4_20210504
+* Tag created by : lke
+* Tag created from branch : CAM_MAM4
+* Tag created on : 2021-05-03 18:08:30.812686-06
+* Comments for this tag follow:
+*     lke : 2021-05-03 : specified oxidants mechanism for CAM
+
+SPECIES
+
+  SOLUTION
+    o2_gridfed -> O2,
+    o2_gk01r16 -> O2,
+    o2_cesm -> O2,
+    n2_era -> N2,
+    n2_cesm -> N2,
+    co2_somffn -> CO2,
+    co2_oco2mip -> CO2,
+    co2_gridfed -> CO2,
+    co2_cesm -> CO2,
+    apo_jena -> O2,
+    bc_a1 -> C,
+    bc_a4 -> C,
+    DMS -> CH3SCH3,
+    dst_a1 -> AlSiO5,
+    dst_a2 -> AlSiO5,
+    dst_a3 -> AlSiO5,
+    H2O2,
+    H2SO4,
+    ncl_a1 -> NaCl,
+    ncl_a2 -> NaCl,
+    ncl_a3 -> NaCl,
+    num_a1 -> H,
+    num_a2 -> H,
+    num_a3 -> H,
+    num_a4 -> H,
+    pom_a1 -> C,
+    pom_a4 -> C,
+    SO2,
+    so4_a1 -> NH4HSO4,
+    so4_a2 -> NH4HSO4,
+    so4_a3 -> NH4HSO4,
+    SOAG -> C,
+    soa_a1 -> C,
+    soa_a2 -> C,
+    H2O
+  END SOLUTION
+
+  FIXED
+    M, O2, OH, O3, NO3, HO2, N2
+  END FIXED
+
+  COL-INT
+    O3 = 0.
+    O2 = 0.
+  END COL-INT
+
+  NOT-TRANSPORTED
+
+  END NOT-TRANSPORTED
+
+END SPECIES
+
+
+SOLUTION CLASSES
+
+  EXPLICIT
+    o2_gridfed
+    o2_gk01r16
+    o2_cesm
+    n2_era
+    n2_cesm
+    co2_somffn
+    co2_oco2mip
+    co2_gridfed
+    co2_cesm
+    apo_jena
+  END EXPLICIT
+
+  IMPLICIT
+    bc_a1
+    bc_a4
+    DMS
+    dst_a1
+    dst_a2
+    dst_a3
+    H2O2
+    H2SO4
+    ncl_a1
+    ncl_a2
+    ncl_a3
+    num_a1
+    num_a2
+    num_a3
+    num_a4
+    pom_a1
+    pom_a4
+    SO2
+    so4_a1
+    so4_a2
+    so4_a3
+    SOAG
+    soa_a1
+    soa_a2
+    H2O
+  END IMPLICIT
+
+END SOLUTION CLASSES
+
+
+CHEMISTRY
+
+  PHOTOLYSIS
+    *********************************
+    *** odd-oxygen
+    *********************************
+    [jh2o2]                       H2O2 + hv -> 2*OH
+  END PHOTOLYSIS
+
+  REACTIONS
+    *********************************
+    *** odd-hydrogen
+    *********************************
+    [OH_H2O2]              OH + H2O2  -> H2O + HO2                                  ; 1.8e-12
+    [usr_HO2_HO2]          HO2 + HO2  -> H2O2 + O2
+    *********************************
+    *** Sulfur
+    *********************************
+    [DMS_NO3]              DMS + NO3  -> SO2 + HNO3                                 ; 1.9e-13, 520
+    [DMS_OHa]              DMS + OH  -> SO2                                         ; 9.6e-12, -234
+    [usr_DMS_OH]           DMS + OH  -> 0.5*SO2 + 0.5*HO2
+    [usr_SO2_OH]           SO2 + OH  -> H2SO4
+  END REACTIONS
+
+  EXT FORCING
+    SO2 <- dataset
+    so4_a1 <- dataset
+    so4_a2 <- dataset
+    pom_a4 <- dataset
+    bc_a4 <- dataset
+    H2O <- dataset
+    num_a1 <- dataset
+    num_a2 <- dataset
+    num_a4 <- dataset
+  END EXT FORCING
+
+END CHEMISTRY
+
+
+SIMULATION PARAMETERS
+
+  VERSION OPTIONS
+    model   = cam
+    machine = intel
+    architecture = hybrid
+    vec_ftns  = on
+    multitask = on
+    namemod = on
+    modules = on
+  END VERSION OPTIONS
+
+END SIMULATION PARAMETERS
+
+
