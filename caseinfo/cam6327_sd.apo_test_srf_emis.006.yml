@@ -1,12 +1,11 @@
-archive_root: /glade/scratch/mclong/archive/cam6327_sd.apo_test_srf_emis.005
-case: cam6327_sd.apo_test_srf_emis.005
-caseroot: /glade/work/mclong/cam-sd-cases/cam6327_sd.apo_test_srf_emis.005
+archive_root: /glade/scratch/mclong/archive/cam6327_sd.apo_test_srf_emis.006
+case: cam6327_sd.apo_test_srf_emis.006
+caseroot: /glade/work/mclong/cam-sd-cases/cam6327_sd.apo_test_srf_emis.006
 chem_mech_template: /glade/p/cgd/oce/people/mclong/cesm/cam6_3_027/src/chemistry/pp_trop_mam4/chem_mech.in
-compset: SDYN_CAM60_CLM50%SP_CICE%PRES_DOCN%DOM_MOSART_SGLC_SWAV
+compset: HIST_CAM60_CLM50%SP_CICE%PRES_DOCN%DOM_MOSART_SGLC_SWAV
 description: '
 
-  An error in 004 caused the model to hang. In 005, `met_rlx_time` was reduced from
-  24.0 to 6.0.
+  Switching to 32L model and nudging (versus metdata.F90).
 
   '
 fincl1:
@@ -45,9 +44,9 @@ fincl2lonlat_dict:
   psa: 64.053w_64.774s
   smo: 170.564w_14.247s
   spo: 24.800w_89.980s
-ncdata: /glade/work/mclong/cam-sd-cases/data/f.e20.FWAMIP.f09_f09.134.1975.009.cam.i.2010-01-01_56L_c170403.apo-forward-tracers.nc
+ncdata: /glade/work/mclong/cam-sd-cases/data/cami-mam3_0000-01-01_0.9x1.25_L32_c141031.apo-forward-tracers.nc
 resolution: f09_f09_mg17
-rundir: /glade/scratch/mclong/cam6327_sd.apo_test_srf_emis.005
+rundir: /glade/scratch/mclong/cam6327_sd.apo_test_srf_emis.006
 sathist_fincl:
 - T
 - U

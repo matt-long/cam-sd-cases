@@ -222,7 +222,7 @@ def cam_i_add_uniform_fields(ncdata_in, ncdata_out, tracer_dict, background_ppm)
         mw = molecular_weights[info["constituent"]]
 
         ic_constant = 1.0e-6 * background_ppm * mw / molecular_weights["air"]
-        var = xr.full_like(ds.CO2, fill_value=ic_constant)
+        var = xr.full_like(ds.Q, fill_value=ic_constant)
         var.name = key
         var.attrs["long_name"] = key
         ds[key] = var
