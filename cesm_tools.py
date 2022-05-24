@@ -1,6 +1,6 @@
 import os
 import copy
-from subprocess import check_call, Popen, PIPE
+from subprocess import check_call, check_output, Popen, PIPE
 from collections import OrderedDict
 
 import warnings
@@ -92,11 +92,10 @@ def ncks_fl_fmt64bit(file_in, file_out=None):
         raise
 
 
-def to_netcdf_clean(dset, path, format="NETCDF4", **kwargs):
+def to_netcdf_clean(dset, path, netcdf3=True, **kwargs):
     """wrap to_netcdf method to circumvent some xarray shortcomings"""
 
     import sys
-    import subprocess
     from netCDF4 import default_fillvals
 
     dset = dset.copy()
@@ -136,14 +135,44 @@ def to_netcdf_clean(dset, path, format="NETCDF4", **kwargs):
 
     print("-" * 30)
     print(f"Writing {path}")
-    dset.to_netcdf(path, format=format, **kwargs)
-    dumps = subprocess.check_output(["ncdump", "-h", path]).strip().decode("utf-8")
+    dset.to_netcdf(path, **kwargs)
+    print("")
+    if netcdf3:
+        ncks_fl_fmt64bit(path)
+
+    dumps = check_output(["ncdump", "-h", path]).strip().decode("utf-8")
     print(dumps)
-    dumps = subprocess.check_output(["ncdump", "-k", path]).strip().decode("utf-8")
+    dumps = check_output(["ncdump", "-k", path]).strip().decode("utf-8")
     print(f"format: {dumps}")
     print("-" * 30)
 
+    
+def ncks_fl_fmt64bit(file_in, file_out=None):
+    """
+    Converts file to netCDF-3 64bit by calling:
+      ncks --fl_fmt=64bit  file_in file_out
 
+    Parameter
+    ---------
+    file : str
+      The file to convert.
+    """
+
+    if file_out is None:
+        file_out = file_in
+
+    ncks_cmd = " ".join(["ncks", "-O", "--fl_fmt=64bit_offset", file_in, file_out])
+    cmd = " && ".join(["module load nco", ncks_cmd])
+
+    p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
+
+    stdout, stderr = p.communicate()
+    if p.returncode != 0:
+        print(stdout.decode("UTF-8"))
+        print(stderr.decode("UTF-8"))
+        raise
+    
+    
 def get_chem_mech_content(path):
     """read chem_mech.in file and return a dictionary
     with content divided into sections and subsections
@@ -447,3 +476,22 @@ def get_area(ds, component):
         return area
     msg = f"unknown component={component}"
     raise ValueError(msg)
+    
+    
+def gen_time_components_variable(time, year_offset=0.):
+    
+    if isinstance(time, xr.DataArray):
+        time_data = time.values
+    else:
+        time_data = time
+        
+    tc = xr.DataArray(
+        [(d.year + year_offset, d.month, d.day, d.hour, d.minute, d.second) for d in time_data],
+        dims=('time', 'n_time_components'),
+        coords={'time': time},
+        attrs={'long_name': 'time components (year, month, day, hour, min, sec)', 'units': 'none'},
+        name='time_components',
+    )
+    tc.encoding['_FillValue'] = None
+    tc.encoding['dtype'] = np.int32
+    return tc    
