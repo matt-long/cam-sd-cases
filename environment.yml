@@ -1,0 +1,58 @@
+name: sno
+channels:
+    - conda-forge
+dependencies:
+    - black
+    - bokeh
+    - bottleneck
+    - cartopy
+    - cf_units
+    - cfgrib
+    - cftime>=1.5.1
+    - cmocean
+    - conda-lock
+    - dask
+    - dask-jobqueue
+    - dask-mpi
+    - distributed
+    - eofs
+    - esmpy
+    - holoviews
+    - intake
+    - intake-esm
+    - intake-xarray
+    - ipykernel
+    - jupyter-server-proxy
+    - jupyter_contrib_nbextensions
+    - jupyterlab
+    - jupyter-book
+    - jupyter_client==6.1.12
+    - matplotlib
+    - metpy
+    - nc-time-axis
+    - ncar-jobqueue
+    - netcdf4
+    - numba
+    - numpy
+    - pandas=1.2.5
+    - pint
+    - pip
+    - pop-tools
+    - pytest
+    - python
+    - scipy
+    - seaborn
+    - seawater
+    - statsmodels
+    - toolz
+    - tqdm
+    - watermark
+    - xarray
+    - xesmf # xarray interface it ESMF tools
+    - xgcm # General Circulation Model Postprocessing with xarray
+    - xhistogram # Fast, flexible, label-aware histograms for numpy and xarray
+    - xrft # fourier transforms for xarray data
+    - zarr
+    - pip:
+      - cdsapi
+        
