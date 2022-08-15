@@ -476,15 +476,15 @@ def get_area(ds, component):
         return area
     msg = f"unknown component={component}"
     raise ValueError(msg)
-    
-    
+
+
 def gen_time_components_variable(time, year_offset=0.):
-    
+
     if isinstance(time, xr.DataArray):
         time_data = time.values
     else:
         time_data = time
-        
+
     tc = xr.DataArray(
         [(d.year + year_offset, d.month, d.day, d.hour, d.minute, d.second) for d in time_data],
         dims=('time', 'n_time_components'),
@@ -494,4 +494,4 @@ def gen_time_components_variable(time, year_offset=0.):
     )
     tc.encoding['_FillValue'] = None
     tc.encoding['dtype'] = np.int32
-    return tc    
+    return tc
