@@ -1,4 +1,4 @@
-name: sno
+name: scargo
 channels:
     - conda-forge
 dependencies:
