@@ -1,7 +1,17 @@
-CAM-SD Cases
-------------
+# CAM-SD Cases
+
 
 This repository has code to generate CAM-SD cases equipped with carbon cycle tracers.
+
+## Kernel
+
+Use `conda` to create the Python kernel (`scargo`) for analysis.
+
+```bash
+conda env create -f environment.yml
+```
+
+## Notebooks
 
 `create-new-case.ipynb`: create a new CAM-SD cases
 
