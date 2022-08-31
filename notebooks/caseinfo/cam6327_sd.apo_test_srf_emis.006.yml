@@ -1,0 +1,102 @@
+archive_root: /glade/scratch/mclong/archive/cam6327_sd.apo_test_srf_emis.006
+case: cam6327_sd.apo_test_srf_emis.006
+caseroot: /glade/work/mclong/cam-sd-cases/cam6327_sd.apo_test_srf_emis.006
+chem_mech_template: /glade/p/cgd/oce/people/mclong/cesm/cam6_3_027/src/chemistry/pp_trop_mam4/chem_mech.in
+compset: HIST_CAM60_CLM50%SP_CICE%PRES_DOCN%DOM_MOSART_SGLC_SWAV
+description: '
+
+  Switching to 32L model and nudging (versus metdata.F90).
+
+  '
+fincl1:
+- T
+- U
+- V
+- Q
+- PS
+- Z3
+- PBLH
+- TMQ
+- OMEGA
+fincl2:
+- T
+- U
+- V
+- Q
+- PS
+- Z3
+- PBLH
+- TMQ
+- OMEGA
+fincl2lonlat_dict:
+  alt: 62.507w_82.451n
+  brw: 156.611w_71.323n
+  cba: 162.720w_55.210n
+  cgo: 144.690e_40.683s
+  gould_57S: 64.222w_57.023s
+  gould_59S: 63.317w_59.026s
+  gould_61S: 60.621w_61.042s
+  gould_63S: 61.123w_63.077s
+  gould_65S: 63.855w_64.785s
+  kum: 154.888w_19.561n
+  ljo: 117.257w_32.867n
+  mlo: 155.576w_19.536n
+  psa: 64.053w_64.774s
+  smo: 170.564w_14.247s
+  spo: 24.800w_89.980s
+ncdata: /glade/work/mclong/cam-sd-cases/data/cami-mam3_0000-01-01_0.9x1.25_L32_c141031.apo-forward-tracers.nc
+resolution: f09_f09_mg17
+rundir: /glade/scratch/mclong/cam6327_sd.apo_test_srf_emis.006
+sathist_fincl:
+- T
+- U
+- V
+- Q
+- PS
+- Z3
+- PBLH
+- TMQ
+- OMEGA
+sathist_track_infile: /glade/work/mclong/cam-sd-cases/data/sathist_infile.hip-orc-tom-aoa.20220303.nc
+srf_emis_files:
+  apo_jena:
+    constituent: O2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFAPO_OCN.carboscope.apo99X_v2021.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFAPO_OCN
+  co2_cesm:
+    constituent: CO2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFCO2_OCN.cesm_fosi_smyle.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFCO2_OCN
+  co2_gridfed:
+    constituent: CO2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFCO2_FF.GCP-GridFED.v2021.3.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFCO2_FF
+  co2_oco2mip:
+    constituent: CO2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFCO2_FF.OCO2-MIP.v2020.1.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFCO2_FF
+  co2_somffn:
+    constituent: CO2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFCO2_OCN.MPI-SOM-FFN.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFCO2_OCN
+  n2_cesm:
+    constituent: N2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFN2_OCN.cesm_fosi_smyle.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFN2_OCN
+  n2_era:
+    constituent: N2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFN2_OCN.era5_shf.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFN2_OCN
+  o2_cesm:
+    constituent: O2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFO2_OCN.cesm_fosi_smyle.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFO2_OCN
+  o2_gk01r16:
+    constituent: O2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFO2_OCN.gk2001_R2016.0.9x1.25.repeat_monclim.19860101-20201231.nc
+    flux_variable: SFO2_OCN
+  o2_gridfed:
+    constituent: O2
+    flux_file: /glade/work/mclong/sno-analysis/sno-flux-products-camified/SFO2_FF.GCP-GridFED.v2021.3.0.9x1.25.19860101-20201231.nc
+    flux_variable: SFO2_FF
+sst_dataset: /glade/p/cesmdata/cseg/inputdata/atm/cam/sst/sst_HadOIBl_bc_0.9x1.25_1850_2020_c210521.nc
