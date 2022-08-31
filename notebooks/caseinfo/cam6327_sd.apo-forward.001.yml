@@ -1,4 +1,4 @@
-archive_root: /glade/scratch/mclong/archive/cam6327_sd.apo-forward.001
+archive_root: /glade/p/eol/stephens/longcoll/archive/cam6327_sd.apo-forward.001
 case: cam6327_sd.apo-forward.001
 caseroot: /glade/work/mclong/cam-sd-cases/cam6327_sd.apo-forward.001
 chem_mech_template: /glade/p/cgd/oce/people/mclong/cesm/cam6_3_027/src/chemistry/pp_trop_mam4/chem_mech.in
